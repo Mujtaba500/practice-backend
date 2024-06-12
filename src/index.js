@@ -10,8 +10,34 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/animals", (req, res) => {
-  res.send("<h1>zebra</h1>");
+app.get("/api/animals", (req, res) => {
+  try {
+    const animals = [
+      {
+        id: 1,
+        name: "Zebra",
+        specie: "mammal",
+      },
+      {
+        id: 2,
+        name: "Lion",
+        specie: "mammal",
+      },
+      {
+        id: 3,
+        name: "crocodile",
+        specie: "reptile",
+      },
+    ];
+    res.json({
+      animals,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
 });
 
 connectDb().then(() => {
