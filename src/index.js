@@ -1,8 +1,6 @@
-import express from "express";
+import app from "./app.js";
 import "dotenv/config";
 import connectDb from "./db/config.js";
-
-const app = express();
 
 app.get("/", (req, res) => {
   res.json({
@@ -40,10 +38,14 @@ app.get("/api/animals", (req, res) => {
   }
 });
 
-connectDb().then(() => {
-  console.log("DB connected");
-});
+connectDb()
+  .then(() => {
+    console.log("DB connected");
+  })
+  .catch((err) => {
+    console.log("MONGODB Connection failed", err);
+  });
 
-app.listen(process.env.port, () => {
+app.listen(process.env.port || 3002, () => {
   console.log("Server started");
 });
