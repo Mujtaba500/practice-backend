@@ -1,1 +1,1 @@
-export const DB_NAME = "hc_backend";
+export const DB_NAME = "MERN_HC";
