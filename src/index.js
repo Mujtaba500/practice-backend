@@ -4,12 +4,6 @@ import connectDb from "./db/config.js";
 import upload from "./middleware/multer.js";
 import { uploadOnCloudinary } from "./utils/cloudinary.js";
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "response 2nd",
-  });
-});
-
 // app.post("/upload", upload.single("meme"), async (req, res) => {
 //   // uploadOnCloudinary("./public/temp");
 //   try {
@@ -32,36 +26,6 @@ app.post("/upload", upload.single("meme"), async (req, res) => {
   res.json({
     url: response.secure_url,
   });
-});
-
-app.get("/api/animals", (req, res) => {
-  try {
-    const animals = [
-      {
-        id: 1,
-        name: "Zebra",
-        specie: "mammal",
-      },
-      {
-        id: 2,
-        name: "Lion",
-        specie: "mammal",
-      },
-      {
-        id: 3,
-        name: "crocodile",
-        specie: "reptile",
-      },
-    ];
-    res.json({
-      animals,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: "Internal Server Error",
-    });
-  }
 });
 
 connectDb()
