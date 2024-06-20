@@ -2,9 +2,6 @@ import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 import "dotenv/config";
 
-const cloud_name = process.env.CLOUDINARY_CLOUD_NAME;
-console.log(cloud_name);
-
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
